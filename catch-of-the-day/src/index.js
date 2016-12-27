@@ -2,6 +2,9 @@
 import React from 'react';
 import {render} from 'react-dom'; // importing just the render method from 'react-dom'
 import './css/style.css'; // rather than a link in our index.html,  let webpack do it
+import App from './components/App';
+
+
 import StorePicker from './components/StorePicker.js';
 
-render(<StorePicker/>, document.querySelector('#main'));
+render(<App/>, document.querySelector('#main'));
