@@ -20,16 +20,18 @@ class StorePicker extends React.Component {
     console.log('you changed url');
     // first, grab text from box
      // const value = $('input').val();
-    console.log(this.storeInput.value); // this is null, this is not pointing to StorePicker!!, how to get the right this?
+    const storeId = this.storeInput.value; // this is null, this is not pointing to StorePicker!!, how to get the right this?
                                   // we must have a reference in the constructor of StorePicker, an es6 thing
                                   // in this scope, before we get to render
     // second, we transition from / to /store/:storeId
+    this.context.router.transitionTo(`/store/${storeId}`)
 
 
   }
 
   render() {
     {/*onSubmit={ this.goToStore.bind(this) } } or....*/}
+    {/*have to know your using context, */}
     return (
       <form className="store-selector"  onSubmit={(e) => this.goToStore(e) }>
         <h2>Please Enter a Store Name</h2>
@@ -39,6 +41,10 @@ class StorePicker extends React.Component {
 
       )
   }
+}
+
+StorePicker.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default StorePicker;
