@@ -128,4 +128,8 @@ componentWillUpdate(nextProps, nextState) {
   }
 }
 
+App.PropTypes = {
+  params: React.PropTypes.object.isRequired
+};
+
 export default App;
