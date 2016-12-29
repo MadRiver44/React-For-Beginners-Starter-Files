@@ -11,8 +11,10 @@ class App extends React.Component {
     super();
 
     this.addFish = this.addFish.bind(this);
+    this.updateFish = this.updateFish.bind(this);
     this.loadSamples = this.loadSamples.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
+
 
     //get initial state
     this.state = {
@@ -59,6 +61,12 @@ componentWillUpdate(nextProps, nextState) {
     this.setState({fishes}); // tell React which exact state to update
   }
 
+  updateFish(key, updatedFish) {
+    const fishes = {...this.state.fishes};
+    fishes[key] = updatedFish;
+    this.setState({ fishes })
+  }
+
   loadSamples() {
     this.setState({
     fishes: sampleFishes
@@ -91,7 +99,10 @@ componentWillUpdate(nextProps, nextState) {
                 order={this.state.order}
                 params={this.props.params}
            />
-          <Inventory addfish={this.addFish} loadSamples={this.loadSamples} />
+          <Inventory addfish={this.addFish}
+          loadSamples={this.loadSamples}
+          fishes={this.state.fishes}
+          updateFish={this.updateFish}/>
       </div>
     )
   }
