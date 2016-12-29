@@ -2,6 +2,8 @@ import React from 'react';
 import { getFunName } from '../helpers';
 
 class StorePicker extends React.Component {
+      /*onSubmit={ this.goToStore.bind(this) } } or....*/
+    /*have to know your using context, */
   /*
   one way....
   One way to get this.storeInput to reference StorePicker class is to bind the goToStore function
@@ -30,8 +32,7 @@ class StorePicker extends React.Component {
   }
 
   render() {
-    {/*onSubmit={ this.goToStore.bind(this) } } or....*/}
-    {/*have to know your using context, */}
+
     return (
       <form className="store-selector"  onSubmit={(e) => this.goToStore(e) }>
         <h2>Please Enter a Store Name</h2>
