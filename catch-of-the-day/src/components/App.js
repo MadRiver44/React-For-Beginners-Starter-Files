@@ -14,6 +14,8 @@ class App extends React.Component {
     this.updateFish = this.updateFish.bind(this);
     this.loadSamples = this.loadSamples.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
+    this.removeFromOrder = this.removeFromOrder.bind(this);
+    this.removeFish = this.removeFish.bind(this);
 
 
     //get initial state
@@ -67,6 +69,13 @@ componentWillUpdate(nextProps, nextState) {
     this.setState({ fishes })
   }
 
+  removeFish(key) {
+    const fishes = {...this.state.fishes};
+    fishes[key] = null;
+    this.setState({ fishes })
+  }
+
+
   loadSamples() {
     this.setState({
     fishes: sampleFishes
@@ -79,6 +88,14 @@ componentWillUpdate(nextProps, nextState) {
     // update or add the new number of fish ordered
     order[key] = order[key] + 1 || 1;
     this.setState({order});
+
+  }
+
+  removeFromOrder(key) {
+    const order = {...this.state.order};
+    delete order[key];
+    this.setState({ order });
+
 
   }
 
@@ -98,8 +115,11 @@ componentWillUpdate(nextProps, nextState) {
           <Order fishes={this.state.fishes}
                 order={this.state.order}
                 params={this.props.params}
+                removeFromOrder={this.removeFromOrder}
            />
-          <Inventory addfish={this.addFish}
+          <Inventory
+          addfish={this.addFish}
+          removeFish={this.removeFish}
           loadSamples={this.loadSamples}
           fishes={this.state.fishes}
           updateFish={this.updateFish}/>

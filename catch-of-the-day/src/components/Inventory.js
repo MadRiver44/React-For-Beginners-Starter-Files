@@ -7,6 +7,7 @@ class Inventory extends React.Component {
     this.renderInventory = this.renderInventory.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange(e, key) {
     const fish = this.props.fishes[key];
     // take a copy of that fish and update it with new data
@@ -34,7 +35,7 @@ class Inventory extends React.Component {
       <textarea type="text" name="desc" value={fish.desc} placeholder="Fish Desc" onChange={(e) => this.handleChange(e, key)}>
       </textarea>
       <input type="text" name="image" value={fish.image} placeholder="Fish Image" onChange={(e) => this.handleChange(e, key)}/>
-
+      <button onClick={() => this.props.removeFish(key)}>Remove Fish</button>
       </div>)
   }
 
