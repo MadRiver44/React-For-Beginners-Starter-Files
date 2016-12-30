@@ -137,14 +137,18 @@ renderLogin() {
       </div>
       )
   }
-}
 
-Inventory.PropTypes = {
+  static PropTypes = {
   fishes: React.PropTypes.object.isRequired,
   removeFish: React.PropTypes.func.isRequired,
+  addFish: React.Proptypes.func.isRequired,
   updateFish: React.PropTypes.func.isRequired,
   loadSamples: React.PropTypes.func.isRequired,
   storeId: React.PropTypes.string.isRequired
 };
+
+}
+
+
 
 export default Inventory;
